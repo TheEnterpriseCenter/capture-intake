@@ -1,0 +1,16 @@
+{
+  "name": "capture-intake",
+  "version": "1.0.0",
+  "description": "Accepts video submissions from capture participants.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Alex Cruikshank",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "formidable": "^1.0.17"
+  }
+}

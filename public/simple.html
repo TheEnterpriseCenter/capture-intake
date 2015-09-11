@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Capture</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+    <link href='beauty.css' rel='stylesheet' type='text/css'>
+  </head>
+  <body class="has-files">
+    <div class="container">
+      <img id="logo" src="Capture-Logo-EPS-black.png"/>
+      <h1>Upload Clips</h1>
+      <form id="upload" action="/clip/new" method="post" enctype="multipart/form-data">
+        <input name="go" type='submit' class="basic" value="GO"/>
+        <div class="form-field" id="cha-city-button">
+          <label for="cha">Chattanooga</label>
+          <input type="radio" class="radio" name="city" value="c"/>
+        </div>
+        <div class="form-field" id="kc-city-button">
+          <label for="kc">Kansas City</label>
+          <input type="radio" class="radio" name="city" label="k"/>
+        </div>
+        <div class="form-field">
+          <label for="first-name">First Name</label>
+          <input id="first-name" name="first" size="20" placeholder="Jane"/>
+        </div>
+        <div class="form-field">
+          <label for="last-name">Last Name</label>
+          <input id="last-name" name="last" size="20" placeholder="Smith"/>
+        </div>
+        <div class="form-field">
+          <label for="birth-year">Year of Birth</label>
+          <input id="birth-year" name="birth" type="number" min="1900" max="2010" value="1980"/>
+        </div>
+        <input name="clip1" type="file"/>
+        <input name="clip2" type="file"/>
+        <input name="clip3" type="file"/>
+        <input name="clip4" type="file"/>
+        <input name="clip5" type="file"/>
+        <input type="submit" class="upload-button" value=Upload/>
+      </form>
+
+    </div>
+  </body>
+</html>
