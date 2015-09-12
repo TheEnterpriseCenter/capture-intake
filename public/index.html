@@ -9,16 +9,17 @@
       <img id="logo" src="Capture-Logo-EPS-black.png"/>
       <h1>Upload Clips</h1>
       <form id="upload" action="/clip/new" method="post" enctype="multipart/form-data">
-        <input name="go" type='submit' class="basic" value="GO"/>
-        <div class="form-field city-button" id="cha-city-button">
-          <label for="cha">Chattanooga</label>
-          <span class="check">&#x25b2;</span>
-          <input type="radio" class="radio" name="city" id="cha" value="c"/>
-        </div>
-        <div class="form-field city-button" id="kc-city-button">
-          <label for="kc">Kansas City</label>
-          <span class="check">&#x25b2;</span>
-          <input type="radio" class="radio" name="city" id="kc" label="k"/>
+        <div class="form-field">
+          <div class="city-button" id="cha-city-button">
+            <label for="cha">Chattanooga</label>
+            <span class="check">&#x25b2;</span>
+            <input type="radio" class="radio" name="city" id="cha" value="c"/>
+          </div>
+          <div class="city-button" id="kc-city-button">
+            <label for="kc">Kansas City</label>
+            <span class="check">&#x25b2;</span>
+            <input type="radio" class="radio" name="city" id="kc" label="k"/>
+          </div>
         </div>
         <div class="form-field">
           <label for="first-name">First Name</label>
@@ -37,7 +38,7 @@
         Drag up to 5 files here or click add to select.
       </div>
       <div class="file-picker">
-        <input name="clip1" type="file" multiple class="file-input"/>
+        <input id="file-input" type="file" multiple class="file-input"/>
         <label class="file-select">
           <span class="icon">+</span>
           add files

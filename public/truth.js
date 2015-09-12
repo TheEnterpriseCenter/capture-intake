@@ -18,7 +18,7 @@ if (window.FormData) {
   each('.file-select', function(select) {
     select.addEventListener('click',function(e) {
       if (allFiles.length < 5)
-        e.target.offsetParent.querySelector('.file-input').click();
+        document.querySelector('#file-input').click();
     }, false);
   });
   // add files on file input change
@@ -34,8 +34,15 @@ if (window.FormData) {
     input.addEventListener('change', function(e) {
       each('.city-button', function(b) { removeClass(b,'checked'); })
       addClass(document.getElementById(e.target.id + '-city-button'), 'checked');
+      validateField('city');
     })
   });
+  document.querySelector('#first-name').addEventListener('change', function(e) {
+    validateField('first');
+  })
+  document.querySelector('#last-name').addEventListener('change', function(e) {
+    validateField('last');
+  })
 
   document.querySelector('.all-files').addEventListener('click', function(e) {
     if (e.target.getAttribute && e.target.getAttribute('data-remove') != null) {
@@ -120,7 +127,15 @@ if (window.FormData) {
     return false;
   }
 
-  function validate() {}
+  function validate() {
+    var valid = true;
+
+    valid = validateField('city') && valid;
+    valid = validateField('first') && valid;
+    valid = validateField('last') && valid;
+
+    return valid;
+  }
 
   // MISC
   function bytes(n) {
@@ -130,6 +145,16 @@ if (window.FormData) {
     return n.toFixed(1) + units[i];
   }
 
+  function validateField(name) {
+    var element = form[name], parent = element.parentNode || element[0].parentNode.parentNode;
+    if (form[name].value.length == 0) {
+      addClass(parent, 'error');
+      return false;
+    }
+    removeClass(parent, 'error');
+    return true;
+  }
+
   function addClass(e,clss) {
     removeClass(e,clss);
     var oldClss = e.getAttribute('class');
@@ -137,7 +162,8 @@ if (window.FormData) {
   }
 
   function removeClass(e,clss) {
-    e.setAttribute('class',(e.getAttribute('class')||'').replace(clss,'').replace(/^\s+|\s+$/g,'').replace(/\s\s+/g,' '))
+    e.setAttribute('class',
+      (e.getAttribute('class')||'').replace(new RegExp('(^|\\s+)'+clss+'($|\\s+)','g'),'$1'));
   }
 
   function each(selector, f) {
