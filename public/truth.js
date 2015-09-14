@@ -5,10 +5,8 @@
 
   /* TODO
     Progress
-    Success.
     Simple form
     Responsiveness
-    leave warning
    */
 
   // EVENT HANDLING
@@ -70,7 +68,7 @@
       el('span',{'class':'file-name'},file.name),
       el('span',{'class':'file-size'},bytes(file.size)),
       el('button',{'class':'remove-file', 'data-remove':i},'✕'),
-      el('span',{'class':'file-progress'},[]),
+      el('span',{'class':'file-progress'},''),
       el('span',{'class':'file-time'},[])
     ]);
   }
@@ -116,6 +114,7 @@
 
     if (validate()) {
       uploading = true;
+      addClass(document.body, 'uploading');
 
       var data = new FormData(form);
       for (var i=0, file; file = allFiles[i]; i++ ) {
@@ -125,22 +124,41 @@
       var request = new XMLHttpRequest();
       request.open("POST", form.getAttribute('action'), true);
 
-      request.onload = requestLoad;
+      request.onload = uploadComplete;
       request.upload.onprogress = requestProgress;
       request.send(data);
     }
 
     return false;
+  }
 
-    function requestLoad() {
-      console.log(request, e);
-      addClass(document.body, 'complete');
-      document.body.scrollTop = 0;
-    };
+  function uploadComplete() {
+    addClass(document.body, 'complete');
+    document.body.scrollTop = 0;
   }
 
   function requestProgress(e) {
-    console.log('progress', e, e.total, e.loaded);
+    var fileInfo = document.querySelectorAll('.file-info');
+    for (var i=0, file, total=0; file = allFiles[i]; i++) {
+      if (fileInfo[i]) {
+        if (! fileInfo[i].querySelector('.done') ) {
+          var progress = fileInfo[i].querySelector('.file-progress');
+          if (e.loaded > total + file.size) {
+            addClass(progress, 'fa fa-check done');
+            progress.innerHTML = '';
+          } else if (e.loaded > total) {
+            progress.innerHTML = parseInt( 100 * (e.loaded - total) / file.size) + '%';
+          } else {
+            progress.innerHTML = '...';
+          }
+        }
+        total += file.size;
+      }
+    }
+    document.querySelector('.upload-button').innerHTML = parseInt( 100 * e.loaded / e.total) + '% complete';
+
+    if ( e.loaded >= e.total )
+      uploadComplete();
   }
 
 

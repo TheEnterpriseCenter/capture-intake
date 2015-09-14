@@ -67,7 +67,7 @@ h1 {
   border-right: 2px solid #000;
 }
 
-.files-maxed .file-select {
+.files-maxed .file-select, .uploading .file-select {
   color: #f2f2f2;
   background-color: #E8E2E3;
   border-bottom: 2px solid #f6f6f6;
@@ -212,6 +212,9 @@ form .city-button label {
   cursor: pointer;
 }
 
+.has-files.uploading .upload-button {
+  border: none;
+}
 
 #kc, #cha {
   position: absolute;
@@ -264,12 +267,28 @@ form .city-button label {
   color: #555;
   cursor: pointer;
 }
+.uploading .file-info .remove-file {
+  display: none;
+}
 
 .file-info .remove-file:hover {
   transform: scale(1);
   color: #F1464D;
   border: 3px solid #333;
   background: #fff;
+}
+
+.file-info .file-progress {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  font-size: 28px;
+}
+
+.file-info .file-progress.done {
+  font-size: 54px;
+  color: #CBCBCB;
+  font-size: 77px;
 }
 
 #drag-target {

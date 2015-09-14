@@ -34,7 +34,6 @@ app.post('/clip/new', function(req, res) {
 
   incomingForm.on('fileBegin', function(name, file){
     var ext = ( file.name.match(/\.([^\.]+)$/) || ['','mov'])[1];
-    console.log(ext);
     file.path = filename(ext);
     uploaded.push(file.path);
   })
@@ -53,7 +52,6 @@ app.post('/clip/new', function(req, res) {
   });
 
   incomingForm.parse(req, function() {
-    console.log("parse CB");
   })
 
   function filename(ext) {
