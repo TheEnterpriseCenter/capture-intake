@@ -1,10 +1,11 @@
-if (window.FormData) {
+(function() {
   var form = document.getElementById('upload');
   var allFiles = [];
+  var uploading = false;
 
   /* TODO
-    Validation.
     Progress
+    Success.
     Simple form
     Responsiveness
     leave warning
@@ -111,8 +112,11 @@ if (window.FormData) {
 
   function onSubmit(e) {
     e.preventDefault();
+    if (uploading) return;
 
     if (validate()) {
+      uploading = true;
+
       var data = new FormData(form);
       for (var i=0, file; file = allFiles[i]; i++ ) {
         data.append('clip' + (2+i), file, file.name);
@@ -120,12 +124,25 @@ if (window.FormData) {
 
       var request = new XMLHttpRequest();
       request.open("POST", form.getAttribute('action'), true);
-      request.onload = function() { console.log(request, e); };
+
+      request.onload = requestLoad;
+      request.upload.onprogress = requestProgress;
       request.send(data);
     }
 
     return false;
+
+    function requestLoad() {
+      console.log(request, e);
+      addClass(document.body, 'complete');
+      document.body.scrollTop = 0;
+    };
   }
+
+  function requestProgress(e) {
+    console.log('progress', e, e.total, e.loaded);
+  }
+
 
   function validate() {
     var valid = true;
@@ -166,7 +183,8 @@ if (window.FormData) {
       (e.getAttribute('class')||'').replace(new RegExp('(^|\\s+)'+clss+'($|\\s+)','g'),'$1'));
   }
 
+
   function each(selector, f) {
     for (var i=0, es=document.querySelectorAll(selector), e; e = es[i]; i++) f(e);
   }
-}
+})();

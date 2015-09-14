@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="container">
-      <img id="logo" src="Capture-Logo-EPS-black.png"/>
+      <img class="logo" src="Capture-Logo-EPS-black.png"/>
       <h1>Upload Clips</h1>
       <form id="upload" action="/clip/new" method="post" enctype="multipart/form-data">
         <div class="form-field">
@@ -46,7 +46,11 @@
       </div>
       <div class="all-files"></div>
       <span class="upload-button">Upload</span>
-
+      <div id="done">
+        <img class="logo" src="Capture-Logo-EPS-black.png"/>
+        <h1>Thank You</h1>
+        <p>You've successfully uploaded your clips. Please attend the Capture premiere to see if your clip is included in one of the films.</p>
+      </div>
     </div>
   </body>
   <script src="truth.js" charset="utf-8"></script>
