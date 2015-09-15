@@ -33,7 +33,7 @@
     input.addEventListener('change', function(e) {
       each('.city-button', function(b) { removeClass(b,'checked'); })
       addClass(document.getElementById(e.target.id + '-city-button'), 'checked');
-      validateField('city');
+      validateCity();
     })
   });
   document.querySelector('#first-name').addEventListener('change', function(e) {
@@ -127,6 +127,8 @@
       request.onload = uploadComplete;
       request.upload.onprogress = requestProgress;
       request.send(data);
+    } else {
+      document.body.scrollTop = 0;
     }
 
     return false;

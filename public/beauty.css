@@ -25,6 +25,7 @@ h1 {
   text-align: center;
   color: #DF2028;
   margin-top: 10px;
+  margin-bottom: 27px;
 }
 
 .logo {
@@ -133,60 +134,55 @@ form .form-field label {
   display: inline-block;
 }
 
-form .form-field.error::after {
-  content: '˿';
-  position: absolute;
-  right: -38px;
-  color: #F1464D;
-  font-size: 70px;
-  top: -58px;
-
-  animation-duration: .25s;
-  animation-name: bounce;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-duration: .25s;
-  -webkit-animation-name: bounce;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  -webkit-animation-timing-function: ease-in-out;
-  -moz-animation-duration: .25s;
-  -moz-animation-name: bounce;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-direction: alternate;
-  -moz-animation-timing-function: ease-in-out;
-  -ms-animation-duration: .25s;
-  -ms-animation-name: bounce;
-  -ms-animation-iteration-count: infinite;
-  -ms-animation-direction: alternate;
-  -ms-animation-timing-function: ease-in-out;
+form .form-field.error > label {
+  animation: redtoblack .25s infinite alternate;
+  -webkit-animation: redtoblack .25s infinite alternate;
+  -moz-animation: redtoblack .25s infinite alternate;
+  -ms-animation: redtoblack .25s infinite alternate;
 }
 
-@keyframes bounce {
-  from { right: -38px; }
-  to { right: -48px; }
-}
-@-webkit-keyframes bounce {
-  from { right: -38px; }
-  to { right: -48px; }
-}
-@-moz-keyframes bounce {
-  from { right: -38px; }
-  to { right: -48px; }
-}
-@-ms-keyframes bounce {
-  from { right: -38px; }
-  to { right: -48px; }
+@keyframes redtoblack { from { color: #000000; } to { color: #F1464D; } }
+@-webkit-keyframes redtoblack { from { color: #000000; } to { color: #F1464D; } }
+@-moz-keyframes redtoblack { from { color: #000000; } to { color: #F1464D; } }
+@-ms-keyframes redtoblack { from { color: #000000; } to { color: #F1464D; } }
+
+@media (min-width: 600px) {
+  form .form-field.error > label {
+    animation: none;
+  }
+
+  form .form-field.error::after {
+    content: '˿';
+    position: absolute;
+    right: -38px;
+    color: #F1464D;
+    font-size: 70px;
+    top: -58px;
+
+    animation: bounce .25s infinite alternate;
+    -webkit-animation: bounce .25s infinite alternate;
+    -moz-animation: bounce .25s infinite alternate;
+    -ms-animation: bounce .25s infinite alternate;
+  }
+
+  @keyframes bounce { from { right: -38px; } to { right: -48px; } }
+  @-webkit-keyframes bounce { from { right: -38px; } to { right: -48px; } }
+  @-moz-keyframes bounce { from { right: -38px; } to { right: -48px; } }
+  @-ms-keyframes bounce { from { right: -38px; } to { right: -48px; } }
 }
 
 form .city-button {
-  position: relative;
-  width: 49%;
+  position: absolute;
+  width: 59%;
   display: inline-block;
-  margin-bottom: 26px;
-  text-align: center;
+  text-align: right;
   cursor: pointer;
+  top: 0;
+  right: 0;
+}
+
+form .city-button.bottom {
+  top: 40px;
 }
 
 form .city-button.checked .check {
@@ -285,6 +281,10 @@ form .city-button label {
 
 .has-files.uploading .upload-button {
   border: none;
+}
+
+#city-select {
+  height: 87px;
 }
 
 #kc, #cha {
@@ -386,15 +386,14 @@ form .city-button label {
 
 #done {
   position: absolute;
-  width: 102%;
+  width: 94%;
   top: 0;
   left: 0;
   background-color: #f6f6f6;
   height: 100%;
   z-index: 2;
   display: none;
-  margin-left: -1%;
-  padding: 0 1%;
+  padding: 0 3%;
 }
 
 .complete #done {

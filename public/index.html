@@ -11,13 +11,14 @@
       <img class="logo" src="Capture-Logo-EPS-black.png"/>
       <h1>Upload Clips</h1>
       <form id="upload" action="/clip/new" method="post" enctype="multipart/form-data">
-        <div class="form-field">
+        <div class="form-field" id="city-select">
+          <label for="city">Your City</label>
           <div class="city-button" id="cha-city-button">
             <label for="cha">Chattanooga</label>
             <span class="check">&#x25b2;</span>
             <input type="radio" class="radio" name="city" id="cha" value="c"/>
           </div>
-          <div class="city-button" id="kc-city-button">
+          <div class="city-button bottom" id="kc-city-button">
             <label for="kc">Kansas City</label>
             <span class="check">&#x25b2;</span>
             <input type="radio" class="radio" name="city" id="kc" label="k"/>
@@ -33,7 +34,7 @@
         </div>
         <div class="form-field">
           <label for="birth-year">Year of Birth</label>
-          <input id="birth-year" name="birth" type="number" min="1900" max="2010" value="1980"/>
+          <input id="birth-year" name="birth" type="number" pattern="[0-9]*" min="1900" max="2010" value="1980"/>
         </div>
       </form>
       <div class="file-help">
