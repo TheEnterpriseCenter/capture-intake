@@ -163,9 +163,7 @@
 
 
   function validate() {
-    var valid = true;
-
-    valid = validateField('city') && valid;
+    var valid = validateCity();
     valid = validateField('first') && valid;
     valid = validateField('last') && valid;
 
@@ -181,8 +179,20 @@
   }
 
   function validateField(name) {
-    var element = form[name], parent = element.parentNode || element[0].parentNode.parentNode;
+    var element = form[name], parent = element.parentNode;
     if (form[name].value.length == 0) {
+      addClass(parent, 'error');
+      return false;
+    }
+    removeClass(parent, 'error');
+    return true;
+  }
+
+  function validateCity() {
+    var cha = document.getElementById('cha');
+    var kc = document.getElementById('kc');
+    var parent = cha.parentNode.parentNode;
+    if ( ! cha.checked && ! kc.checked ) {
       addClass(parent, 'error');
       return false;
     }
