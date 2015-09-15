@@ -13,7 +13,7 @@ body {
   padding: 0 3%;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 500px) {
   .container {
     width: 409px;
     padding: 0;
@@ -43,7 +43,7 @@ h1 {
   margin-left: 0;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 500px) {
   .file-picker {
     width: 59%;
     margin-left: 8%;
@@ -101,7 +101,7 @@ h1 {
   display: none;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 500px) {
   .file-help {
     display: block;
   }
@@ -130,7 +130,8 @@ form .form-field input {
 }
 
 form .form-field label {
-  width: 39%;
+  width: 37%;
+  margin-right: 2%;
   display: inline-block;
 }
 
@@ -146,7 +147,7 @@ form .form-field.error > label {
 @-moz-keyframes redtoblack { from { color: #000000; } to { color: #F1464D; } }
 @-ms-keyframes redtoblack { from { color: #000000; } to { color: #F1464D; } }
 
-@media (min-width: 600px) {
+@media (min-width: 500px) {
   form .form-field.error > label {
     animation: none;
   }
@@ -173,7 +174,7 @@ form .form-field.error > label {
 
 form .city-button {
   position: absolute;
-  width: 59%;
+  width: 100%;
   display: inline-block;
   text-align: right;
   cursor: pointer;
@@ -240,6 +241,7 @@ form .city-button label {
   width: auto;
   color: #666;
   cursor: pointer;
+  margin-right: 1%;
 }
 
 .upload-button {
@@ -283,8 +285,30 @@ form .city-button label {
   border: none;
 }
 
+.has-files.uploading .upload-button:hover {
+  background-color: #F1464D;
+}
+
+.has-files .upload-button.error {
+  height: auto;
+}
+
+.has-files .upload-button.error h4 {
+  margin: 0;
+}
+
+.has-files .upload-button.error p {
+  line-height: 35px;
+  font-size: 26px;
+  margin: 0;
+  padding: 0 1em 1em;
+}
+
 #city-select {
   height: 87px;
+}
+#city-select > label {
+  width: 33%;
 }
 
 #kc, #cha {

@@ -124,7 +124,14 @@
       var request = new XMLHttpRequest();
       request.open("POST", form.getAttribute('action'), true);
 
-      request.onload = uploadComplete;
+      request.onreadystatechange = function() {
+        if (request.readyState > 1) {
+          if (request.status != 200)
+            displayError(request.responseText);
+          else
+            uploadComplete();
+        }
+      }
       request.upload.onprogress = requestProgress;
       request.send(data);
     } else {
@@ -132,6 +139,14 @@
     }
 
     return false;
+  }
+
+  function displayError(e) {
+    var upload = document.querySelector('.upload-button');
+    upload.innerHTML = '';
+    addClass(upload, 'error');
+    upload.appendChild(el('h4',{},'ERROR'));
+    upload.appendChild(el('p',{},'There has been a problem with your submission. Please try again on a better connection or at a later time'));
   }
 
   function uploadComplete() {
@@ -158,9 +173,6 @@
       }
     }
     document.querySelector('.upload-button').innerHTML = parseInt( 100 * e.loaded / e.total) + '% complete';
-
-    if ( e.loaded >= e.total )
-      uploadComplete();
   }
 
 
