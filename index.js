@@ -71,4 +71,5 @@ app.post('/clip/new', function(req, res) {
   }
 });
 
-app.listen(8000);
+server = app.listen(8000);
+server.timeout = 24 * 60 * 60 * 1000; 
