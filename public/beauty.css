@@ -408,23 +408,7 @@ form .city-button label {
   background-color: #eee;
 }
 
-#done {
-  position: absolute;
-  width: 94%;
-  top: 0;
-  left: 0;
-  background-color: #f6f6f6;
-  height: 100%;
-  z-index: 2;
-  display: none;
-  padding: 0 3%;
-}
-
-.complete #done {
-  display: block;
-}
-
-#done p {
+p {
   line-height: 39px;
   font-size: 22px;
 }

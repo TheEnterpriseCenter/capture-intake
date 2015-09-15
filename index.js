@@ -29,7 +29,7 @@ app.post('/clip/new', function(req, res) {
     if ( name == 'last' )
       last = value.toLowerCase();
     if ( name == 'birth' )
-      birth = parseInt(birth) % 100;
+      birth = parseInt(value) % 100;
   })
 
   incomingForm.on('fileBegin', function(name, file){
@@ -48,7 +48,7 @@ app.post('/clip/new', function(req, res) {
       } catch (e) { }
     })
 
-    res.sendStatus(200);
+    res.redirect(200,'/success.html');
   });
 
   incomingForm.parse(req, function() {

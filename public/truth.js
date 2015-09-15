@@ -150,8 +150,7 @@
   }
 
   function uploadComplete() {
-    addClass(document.body, 'complete');
-    document.body.scrollTop = 0;
+    location.href = '/success.html';
   }
 
   function requestProgress(e) {
