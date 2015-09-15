@@ -58,6 +58,9 @@ h1 {
   margin: 0;
   color: #fff;
   transition: background .1s linear, border .1s linear, color .1s linear;
+  -webkit-transition: background .1s linear, border .1s linear, color .1s linear;
+  -moz-transition: background .1s linear, border .1s linear, color .1s linear;
+  -ms-transition: background .1s linear, border .1s linear, color .1s linear;
 }
 
 .file-select:hover {
@@ -89,7 +92,7 @@ h1 {
 }
 
 .files-maxed .file-help {
-    color: #ccc;
+  color: #ccc;
 }
 
 form .basic {
@@ -128,9 +131,36 @@ form .form-field.error::after {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
+  -webkit-animation-duration: .25s;
+  -webkit-animation-name: bounce;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-duration: .25s;
+  -moz-animation-name: bounce;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: alternate;
+  -moz-animation-timing-function: ease-in-out;
+  -ms-animation-duration: .25s;
+  -ms-animation-name: bounce;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-direction: alternate;
+  -ms-animation-timing-function: ease-in-out;
 }
 
 @keyframes bounce {
+  from { right: -38px; }
+  to { right: -48px; }
+}
+@-webkit-keyframes bounce {
+  from { right: -38px; }
+  to { right: -48px; }
+}
+@-moz-keyframes bounce {
+  from { right: -38px; }
+  to { right: -48px; }
+}
+@-ms-keyframes bounce {
   from { right: -38px; }
   to { right: -48px; }
 }
@@ -147,12 +177,21 @@ form .city-button {
 form .city-button.checked .check {
   color: #DF2028;
   transform: rotate(0deg) scale(1);
+  -webkit-transform: rotate(0deg) scale(1);
+  -moz-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
   border: 4px solid black;
 }
 
 form .city-button .check {
   transform: rotate(-120deg) scale(.6);
+  -webkit-transform: rotate(-120deg) scale(.6);
+  -moz-transform: rotate(-120deg) scale(.6);
+  -ms-transform: rotate(-120deg) scale(.6);
   transition: border .25s ease-out, color .25s ease-out, transform .25s ease;
+  -webkit-transition: border .25s ease-out, color .25s ease-out, -webkit-transform .25s ease;
+  -moz-transition: border .25s ease-out, color .25s ease-out, -moz-transform .25s ease;
+  -ms-transition: border .25s ease-out, color .25s ease-out, -ms-transform .25s ease;
   font-size: 25px;
   color: #f6f6f6;
   display: inline-block;
@@ -172,12 +211,21 @@ form .city-button:hover label {
 
 form .city-button.checked label {
   transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
   color: #000;
 }
 
 form .city-button label {
   transform: scale(.8);
+  -webkit-transform: scale(.8);
+  -moz-transform: scale(.8);
+  -ms-transform: scale(.8);
   transition: transform .2s ease-out, color .2s linear;
+  -webkit-transition: -webkit-transform .2s ease-out, color .2s linear;
+  -moz-transition: -moz-transform .2s ease-out, color .2s linear;
+  -ms-transition: -ms-transform .2s ease-out, color .2s linear;
   width: auto;
   color: #666;
   cursor: pointer;
@@ -201,6 +249,9 @@ form .city-button label {
   border-right: 2px solid #f6f6f6;
   margin: 0;
   transition: background .1s linear, border .1s linear, color .1s linear;
+  -webkit-transition: background .1s linear, border .1s linear, color .1s linear;
+  -moz-transition: background .1s linear, border .1s linear, color .1s linear;
+  -ms-transition: background .1s linear, border .1s linear, color .1s linear;
 }
 
 .has-files .upload-button {
@@ -209,6 +260,12 @@ form .city-button label {
   border-bottom: 2px solid #444;
   border-right: 2px solid #444;
   cursor: pointer;
+}
+
+.has-files .upload-button:hover {
+  background-color: #DD391C;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
 }
 
 .has-files.uploading .upload-button {
@@ -262,7 +319,13 @@ form .city-button label {
   display: block;
   padding: 0 0 0 1px;
   transform: rotate(0deg) scale(.8);
+  -webkit-transform: rotate(0deg) scale(.8);
+  -moz-transform: rotate(0deg) scale(.8);
+  -ms-transform: rotate(0deg) scale(.8);
   transition: transform .1s ease-out, border .1s linear, color .1s linear, background .1s linear;
+  -webkit-transition: -webkit-transform .1s ease-out, border .1s linear, color .1s linear, background .1s linear;
+  -moz-transition: -moz-transform .1s ease-out, border .1s linear, color .1s linear, background .1s linear;
+  -ms-transition: -ms-transform .1s ease-out, border .1s linear, color .1s linear, background .1s linear;
   color: #555;
   cursor: pointer;
 }
@@ -272,6 +335,9 @@ form .city-button label {
 
 .file-info .remove-file:hover {
   transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
   color: #F1464D;
   border: 3px solid #333;
   background: #fff;
