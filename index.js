@@ -1,9 +1,10 @@
 var express = require('express');
 var app = express();
+var dotenv = require('dotenv').config();
 var formidable = require('formidable');
 var fs = require('fs');
 
-var BASE_DIRECTORY = process.env['CAPTURE_DIRECTORY'] || './';
+var BASE_DIRECTORY = process.env['CAPTURE_DIRECTORY'] || './clips/';
 
 app.use(express.static('public'));
 
@@ -71,5 +72,5 @@ app.post('/clip/new', function(req, res) {
   }
 });
 
-server = app.listen(8000);
-server.timeout = 24 * 60 * 60 * 1000; 
+server = app.listen(parseInt(process.env.SERVER_PORT||8000));
+server.timeout = 24 * 60 * 60 * 1000;
