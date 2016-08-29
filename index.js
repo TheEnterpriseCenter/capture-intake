@@ -1,3 +1,4 @@
+require('systemd')
 var express = require('express');
 var app = express();
 var dotenv = require('dotenv').config();
@@ -72,5 +73,6 @@ app.post('/clip/new', function(req, res) {
   }
 });
 
-server = app.listen(parseInt(process.env.SERVER_PORT||8000));
+server = app.listen(process.env.NODE_ENV=='production' ? 'systemd' : 8000);
+if (process.env.NODE_ENV=='production')
 server.timeout = 24 * 60 * 60 * 1000;
